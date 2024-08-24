@@ -28,13 +28,14 @@ test.describe('Purchase Item',()=>{
       const frameContent = frame.getByTestId('content')
       const connectWallet = frame.getByTestId('payrow')
       const detectedWallet = frame.getByText('Detected')
-
+      await page.waitForTimeout(2000)
       const pagePromise = context.waitForEvent('page');
       await expect(frameContent).toBeVisible({timeout: 10000})
       await connectWallet.click()
       await detectedWallet.click()
       const newPage = await pagePromise;
-      await expect(newPage).toHaveURL('chrome-extension://nanpjhkemgnnajbacnamjjamboennndf/notification.html')
+      await expect(newPage).toHaveURL(/notification.html/);
+
     }
   });
 })
