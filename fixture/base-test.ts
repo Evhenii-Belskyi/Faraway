@@ -6,11 +6,11 @@ export const test = base.extend<{
   page: Page
 }>({
   context: async ({ }, use) => {
-    const pathToExtension = path.join(__dirname, 'metamask-chrome-12.0.6');
-    console.log(pathToExtension)
+    const pathToExtension = path.join(__dirname,'metamask-chrome-12.0.6');
     const context = await chromium.launchPersistentContext('', {
       headless: false,
       args: [
+        `--headless=new`,
         `--disable-extensions-except=${pathToExtension}`,
         `--load-extension=${pathToExtension}`,
       ],
