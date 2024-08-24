@@ -9,7 +9,7 @@ test.describe('Purchase Item',()=>{
      logged = await login(page, context);
   })
 
-  test.only('Purchase Item', async ({ page, context}) => {
+  test('Purchase Item', async ({ page, context}) => {
     await page.bringToFront()
     if(logged){
       const selectCur = page.locator('#blockchain')
